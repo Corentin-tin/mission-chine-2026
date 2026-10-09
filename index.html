@@ -286,7 +286,7 @@ footer ul{margin:0;padding-left:18px;display:grid;gap:2px}
 .tl-seg span{white-space:nowrap;overflow:hidden;text-overflow:clip}
 .tl-seg.tight{padding:0}
 .tl-seg.tight span{visibility:hidden}
-.tl-gap{position:absolute;top:3px;bottom:3px;left:0;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:600;color:var(--muted);background:repeating-linear-gradient(135deg,transparent 0 5px,var(--line) 5px 7px);overflow:hidden;white-space:nowrap}
+.tl-shift{position:absolute;top:-9px;transform:translateX(-50%);z-index:2;padding:0 5px;border-radius:999px;font-family:var(--f-mono);font-size:.62rem;font-weight:600;line-height:15px;white-space:nowrap;color:var(--surface);background:var(--warn);pointer-events:none}
 .day .city{max-width:100%;overflow-wrap:anywhere;white-space:normal}
 .tl-seg.approx{background-image:repeating-linear-gradient(135deg,transparent 0 6px,rgba(255,255,255,.18) 6px 9px)}
 .tl-seg:hover,.tl-seg:focus-visible,.tl-seg.sel{outline:2px solid var(--ink);outline-offset:1px;z-index:2}
@@ -1099,7 +1099,17 @@ footer ul{margin:0;padding-left:18px;display:grid;gap:2px}
       ["2026-10-17T13:30"+BE,"2026-10-17T14:30"+BE,"road","Frontière, bagages, retour",1]
     ].map(s => ({a:new Date(s[0]), b:new Date(s[1]), k:s[2], l:s[3], approx:!!s[4], ao:s[0].slice(-6), bo:s[1].slice(-6)}));
     const PLACE = {"+02:00":"Bruxelles","+04:00":"Dubaï","+08:00":"Chine"};
-    const loc = (d,off) => { const t = new Date(d.getTime() + (parseInt(off)*60 + (off[0]==="-"?-1:1)*parseInt(off.slice(4)))*60000); return t.toISOString().slice(11,16); };
+    const offMs = off => (parseInt(off)*60 + (off[0]==="-"?-1:1)*parseInt(off.slice(4)))*60000;
+    const loc = (d,off) => new Date(d.getTime() + offMs(off)).toISOString().slice(11,16);
+    // Heure locale « murale » : pendant un vol, l'horloge passe de l'heure de départ à celle d'arrivée
+    segs.forEach(s => { s.La = s.a.getTime() + offMs(s.ao); s.Lb = s.b.getTime() + offMs(s.bo); s.shift = (offMs(s.bo) - offMs(s.ao))/36e5; });
+    const localNow = t => {
+      const s = segs.find(x => t >= x.a.getTime() && t < x.b.getTime());
+      if (s) return s.La + (t - s.a.getTime())/(s.b - s.a)*(s.Lb - s.La);
+      return t + offMs(t < segs[0].a.getTime() ? segs[0].ao : segs[segs.length-1].bo);
+    };
+    const dur = ms => { const m = Math.round(ms/6e4); return `${Math.floor(m/60)} h ${String(m%60).padStart(2,"0")}`; };
+    const sh = h => (h > 0 ? "+" : "−") + Math.abs(h) + " h";
     const head = (document.getElementById("headImg")||{}).getAttribute ? document.getElementById("headImg").getAttribute("href") : "";
 
     // Légende
@@ -1108,46 +1118,46 @@ footer ul{margin:0;padding-left:18px;display:grid;gap:2px}
     lg.innerHTML = Object.entries(KIND).map(([k,v]) => `<span><i class="k-${k}"></i>${v}</span>`).join("") + `<span><i class="k-road approx" style="background-image:repeating-linear-gradient(135deg,transparent 0 3px,rgba(255,255,255,.45) 3px 5px)"></i>Horaire estimé</span>`;
     prog.querySelector(".sec-head").after(lg);
 
-    const days = []; let prevEnd = 0;
+    const days = [];
     document.querySelectorAll("#days .day").forEach(dayEl => {
-      const date = dayEl.dataset.date, off = date === "2026-10-10" ? BE : CN;
-      const start = new Date(`${date}T00:00:00${off}`).getTime(), end = start + 864e5;
-      const from = Math.max(start, prevEnd); prevEnd = end;
+      const date = dayEl.dataset.date;
+      const start = Date.parse(`${date}T00:00:00Z`), end = start + 864e5; // minuit en heure locale
       const wrap = document.createElement("div"); wrap.className = "tl";
       const bar = document.createElement("div"); bar.className = "tl-bar";
       bar.innerHTML = `<div class="tl-grid">${[3,6,9,12,15,18,21].map(h => `<b style="left:${h/24*100}%"></b>`).join("")}</div>`;
       const info = document.createElement("div"); info.className = "tl-info";
       const items = [];
       segs.forEach(s => {
-        const a = Math.max(s.a.getTime(), from), b = Math.min(s.b.getTime(), end);
+        const a = Math.max(s.La, start), b = Math.min(s.Lb, end);
         if (b <= a) return;
         const btn = document.createElement("button"); btn.type = "button";
         btn.className = `tl-seg k-${s.k}` + (s.approx ? " approx" : "");
         btn.style.left = ((a-start)/864e5*100) + "%"; btn.style.width = ((b-a)/864e5*100) + "%";
         const times = s.ao === s.bo ? `${loc(s.a,s.ao)}–${loc(s.b,s.bo)} (${PLACE[s.ao]})` : `${loc(s.a,s.ao)} ${PLACE[s.ao]} → ${loc(s.b,s.bo)} ${PLACE[s.bo]}`;
-        const txt = `${s.approx?"≈ ":""}${times} · ${s.l}`;
+        const extra = s.k === "fly" ? ` · vol de ${dur(s.b - s.a)}${s.shift ? `, décalage ${sh(s.shift)}` : ""}` : "";
+        const txt = `${s.approx?"≈ ":""}${times} · ${s.l}${extra}`;
         btn.innerHTML = `<span>${s.l}</span>`;
         btn.title = txt; btn.setAttribute("aria-label", `${KIND[s.k]} : ${txt}`);
         const show = () => { bar.querySelectorAll(".tl-seg.sel").forEach(x => x.classList.remove("sel")); btn.classList.add("sel");
-          info.innerHTML = `<span class="mono">${s.approx?"≈ ":""}${times}</span> · <b>${s.l}</b> <span class="muted">· ${KIND[s.k]}${s.approx?", horaire estimé":""}</span>`; };
+          info.innerHTML = `<span class="mono">${s.approx?"≈ ":""}${times}</span> · <b>${s.l}</b> <span class="muted">· ${KIND[s.k]}${extra}${s.approx?", horaire estimé":""}</span>`; };
         btn.addEventListener("click", show); btn.addEventListener("mouseenter", show); btn.addEventListener("focus", show);
         bar.appendChild(btn); items.push(btn);
+        if (s.shift && s.Lb > start && s.Lb <= end){ const g = document.createElement("span"); g.className = "tl-shift";
+          g.style.left = ((s.Lb-start)/864e5*100) + "%"; g.textContent = sh(s.shift); bar.appendChild(g); }
       });
-      if (from > start){ const g = document.createElement("div"); g.className = "tl-gap"; g.style.width = ((from-start)/864e5*100) + "%";
-        g.textContent = "Décalage horaire +" + Math.round((from-start)/36e5) + " h"; g.title = "Ces heures sont déjà passées la veille, à l'heure de Bruxelles"; bar.appendChild(g); }
       const now = document.createElement("div"); now.className = "tl-now"; now.hidden = true;
       if (head) now.innerHTML = `<img src="${head}" alt="Vous êtes ici">`;
       bar.appendChild(now);
       const ticks = document.createElement("div"); ticks.className = "tl-ticks";
       ticks.innerHTML = [0,6,12,18,24].map(h => `<span style="left:${h/24*100}%">${String(h).padStart(2,"0")}h</span>`).join("");
-      info.innerHTML = `<span class="tl-tz">Échelle 0–24 h, heure ${off===BE?"de Bruxelles":"de Chine / Macao"}. Touchez un bloc pour le détail.</span>`;
+      info.innerHTML = `<span class="tl-tz">Échelle 0–24 h en heure locale : l'horloge change à chaque vol. Touchez un bloc pour le détail.</span>`;
       wrap.append(bar, ticks, info);
       const h3 = dayEl.querySelector(".body h3"); h3.after(wrap);
-      days.push({start, end, from, now, items});
+      days.push({start, end, now, items});
     });
 
     function fit(){ days.forEach(d => d.items.forEach(b => { const sp = b.firstChild; b.classList.remove("tight"); if (sp.scrollWidth > b.clientWidth - 8) b.classList.add("tight"); })); }
-    function nowLine(){ const t = Date.now(); days.forEach(d => { const on = t >= d.start && t < d.end && !(t < d.from); d.now.hidden = !on; if (on) d.now.style.left = ((t-d.start)/864e5*100) + "%"; }); }
+    function nowLine(){ const t = localNow(Date.now()); days.forEach(d => { const on = t >= d.start && t < d.end; d.now.hidden = !on; if (on) d.now.style.left = ((t-d.start)/864e5*100) + "%"; }); }
     fit(); nowLine();
     window.addEventListener("resize", fit);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
