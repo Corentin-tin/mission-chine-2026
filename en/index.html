@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>China Mission 2026</title>
+<meta name="description" content="Schedule, flights, hotels and practical info for the China business trip, 10–17 October 2026.">
+<link rel="alternate" hreflang="fr" href="https://corentin-tin.github.io/mission-chine-2026/">
+<link rel="alternate" hreflang="en" href="https://corentin-tin.github.io/mission-chine-2026/en/">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="../assets/favicon-48.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta name="theme-color" content="#E21F10">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;1,600;1,700&family=Outfit:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ===== Board ===== -->
+  <header class="board" aria-label="Trip summary">
+    <div class="board-top">
+      <div class="brand">
+        <img class="brand-logo" src="../assets/logo-g.png" alt="" width="131" height="240">
+        <div>
+          <div class="label" style="color:var(--board-muted)">Business trip · expotrip group</div>
+          <h1>China Mission 2026</h1>
+          <p class="sub">Shanghai → Macao → Guangzhou · 10–17 October 2026 · CIIF &amp; Canton Fair</p>
+        </div>
+      </div>
+      <div class="board-meta">
+        <div class="status" id="status"><i></i><span id="statusText">—</span></div>
+        <nav class="lang" aria-label="Language"><a href="../" hreflang="fr" lang="fr">FR</a><span aria-current="page">EN</span></nav>
+      </div>
+    </div>
+    <div class="route" aria-label="Flight route">
+      <span class="stop key">BRU</span><span class="arr">→</span>
+      <span class="stop">DXB</span><span class="arr">→</span>
+      <span class="stop key">PVG Shanghai</span><span class="arr">→</span>
+      <span class="stop key">MFM Macao</span><span class="arr">⇢ road</span>
+      <span class="stop key">CAN Guangzhou</span><span class="arr">→</span>
+      <span class="stop">DXB</span><span class="arr">→</span>
+      <span class="stop key">BRU</span>
+    </div>
+    <div class="board-grid">
+      <div class="cell">
+        <div class="label" id="cdLabel">EK 182 takes off in</div>
+        <div class="digits" id="cd">
+          <div><b id="cdD">--</b><span>days</span></div>
+          <div><b id="cdH">--</b><span>h</span></div>
+          <div><b id="cdM">--</b><span>min</span></div>
+        </div>
+      </div>
+      <div class="cell">
+        <div class="label">Local times</div>
+        <div class="clocks">
+          <div class="clock"><span>Brussels</span><span><span class="t" id="clkBru">--:--</span> <small>UTC+2</small></span></div>
+          <div class="clock"><span>Dubai</span><span><span class="t" id="clkDxb">--:--</span> <small>+2 h</small></span></div>
+          <div class="clock"><span>China · Macao</span><span><span class="t" id="clkCn">--:--</span> <small>+6 h</small></span></div>
+        </div>
+      </div>
+      <div class="cell">
+        <div class="label">Next flight</div>
+        <div class="next" id="nextFlight"></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="tabs" aria-label="Sections">
+    <ul>
+      <li><a href="#carte">Map</a></li>
+      <li><a href="#programme">Schedule</a></li>
+      <li><a href="#vols">Flights</a></li>
+      <li><a href="#hotels">Hotels</a></li>
+      <li><a href="#visites">Fairs &amp; visits</a></li>
+      <li><a href="#libre">Free time (unofficial)</a></li>
+      <li><a href="#checklist">Before you go</a></li>
+      <li><a href="#frontieres">Borders</a></li>
+      <li><a href="#kit">On the ground</a></li>
+      <li><a href="#contacts">Emergencies</a></li>
+      <li><a href="#confirmer">To be confirmed</a></li>
+      <li><a href="#partager">Share</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== Alerts ===== -->
+  <div class="alerts">
+    <div class="alert">
+      <span class="label">Return flight</span>
+      <h3>EK 363 "17 Oct 00:20" = Friday 16, late evening</h3>
+      <p>Be at Baiyun airport T3 around <b>21:30 on Friday 16</b>. Immigration and security on top of check-in.</p>
+    </div>
+    <div class="alert">
+      <span class="label">Mandatory</span>
+      <h3>E-Arrival Card before the flight</h3>
+      <p><b>NIA 12367</b> app or the Chinese government website: passport, flight <b>EK 304</b>, Jing An Shangri-La address. Take a screenshot of the QR code.</p>
+    </div>
+    <div class="alert info">
+      <span class="label">eSIM</span>
+      <h3>Install on 9 or 10 Oct, not earlier</h3>
+      <p>Regional plans can activate on their own. Too early, and your data days run out before the return.</p>
+    </div>
+  </div>
+
+  <!-- ===== Map ===== -->
+  <section id="carte" aria-label="Trip map">
+    <div class="sec-head">
+      <h2>Where is the trip at?</h2>
+      <span class="live-pill" id="mLive"><i></i><span id="mLiveTxt">Live</span></span>
+    </div>
+    <div class="map-tools">
+      <div class="seg" role="group" aria-label="Map framing">
+        <button type="button" id="vFollow" aria-pressed="true">Follow</button>
+        <button type="button" id="vWorld" aria-pressed="false">Whole trip</button>
+        <button type="button" id="vChina" aria-pressed="false">China</button>
+      </div>
+      <span class="muted" style="font-size:.8rem">Schedule times · legs marked ≈ are estimates</span>
+    </div>
+    <div class="map-layout">
+      <div class="map-box" id="mapBox">
+        <svg id="mapSvg" viewBox="0 0 1250 570" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Route map showing the current position and the next stop">
+          <defs>
+            <filter id="hShadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#000" flood-opacity=".35"/></filter>
+          </defs>
+          <g id="gGeo">
+            <path class="land" id="geoLand"/>
+            <path class="land-cn" id="geoCn"/>
+            <path class="borders" id="geoBorders"/>
+          </g>
+          <g id="gRoutes"></g>
+          <g id="gPins"></g>
+          <g id="gArrow"></g>
+          <g id="gHead"><g id="gFlag" visibility="hidden"><line id="flagPole" class="flag-pole"/><path id="flagCloth" class="flag-cloth"/><g id="flagStars"></g></g><g id="headInner"><image id="headImg" href="../assets/img/head.png" preserveAspectRatio="xMidYMid meet"/></g></g>
+        </svg>
+        <canvas id="fxCanvas" aria-hidden="true"></canvas>
+        <div class="map-legend">Schematic map</div>
+      </div>
+      <div class="side">
+        <div class="now"><span class="label">Now</span><b id="mNow">—</b><span class="muted" id="mNowSub" style="font-size:.85rem"></span></div>
+        <div class="nxt"><span class="label">Next stop</span><span class="big" id="mNext">—</span><span id="mNextSub" style="font-size:.88rem"></span><span class="cd" id="mNextCd"></span></div>
+        <div><span class="label">After that</span><ol id="mLater"></ol></div>
+      </div>
+    </div>
+    <div class="scrub">
+      <button type="button" class="btn ghost sm" id="mPlay" aria-label="Play through the schedule">▶ Replay</button>
+      <input type="range" id="mTime" min="0" max="10000" step="1" value="0" aria-label="Move through time">
+      <button type="button" class="btn sm" id="mNowBtn">Now</button>
+    </div>
+    <p class="muted" style="font-size:.82rem;margin-top:-6px">Drag the slider to see where you will be at any point in the trip. <span class="when mono" id="mWhen"></span></p>
+  </section>
+
+  <!-- ===== Schedule ===== -->
+  <section id="programme">
+    <div class="sec-head">
+      <h2>Day-by-day schedule</h2>
+      <span class="muted" style="font-size:.85rem">Local time in each city</span>
+    </div>
+    <div class="days" id="days">
+      <div class="day" data-date="2026-10-10">
+        <div class="when"><span>Sat</span><b>10</b><span class="city">Brussels</span></div>
+        <div class="body">
+          <h3>Departure</h3>
+          <ul>
+            <li><span class="mono">17:45</span> leave from the HUB (for those travelling together)</li>
+            <li><span class="mono">19:00</span> meet at Brussels Airport <span class="tag">exact spot TBC</span></li>
+            <li><span class="mono">21:40</span> <b>EK 182</b> BRU → Dubai · A350, overnight flight</li>
+          </ul>
+        </div>
+      </div>
+      <div class="day" data-date="2026-10-11">
+        <div class="when"><span>Sun</span><b>11</b><span class="city">Dubai → Shanghai</span></div>
+        <div class="body">
+          <h3>Transit and arrival in Shanghai</h3>
+          <ul>
+            <li><span class="mono">06:55</span> arrive DXB T3 · 2 h 45 connection</li>
+            <li><span class="mono">09:40</span> <b>EK 304</b> DXB → Shanghai Pudong T2, arrives <span class="mono">22:20</span></li>
+            <li><span class="mono">22:30</span> regroup after baggage claim, transfer to the hotel</li>
+          </ul>
+          <p class="note">Hotel arrival around midnight (Pudong → Jing'an ≈ 1 h by road).</p>
+        </div>
+      </div>
+      <div class="day" data-date="2026-10-12">
+        <div class="when"><span>Mon</span><b>12</b><span class="city">Shanghai</span></div>
+        <div class="body">
+          <h3>CIIF robotics fair · full day</h3>
+          <ul><li>All groups together · NECC Hongqiao</li></ul>
+          <p class="note">Jing'an → NECC: 40–50 min by car, or metro line 2 to <i>National Exhibition and Convention Center</i>.</p>
+        </div>
+      </div>
+      <div class="day" data-date="2026-10-13">
+        <div class="when"><span>Tue</span><b>13</b><span class="city">Shanghai → Macao</span></div>
+        <div class="body">
+          <h3>Groups split · flight to Macao</h3>
+          <p class="note">Schedule for <b>group B "Circus"</b> below. Other groups: check yours in the expotrip app.</p>
+          <ul>
+            <li>Hotel check-out in the morning</li>
+            <li>Your choice: <b>Agibot visit</b> or back to the CIIF fair</li>
+            <li><span class="mono">13:45</span> transfer from the hotel lobby, <b>with your luggage</b>, to Pudong T1</li>
+            <li><span class="mono">17:40</span> <b>MU 9991</b> China Eastern → Macao, arrives <span class="mono">20:25</span></li>
+            <li>Check-in at the Conrad Macao</li>
+          </ul>
+          <p class="note">Keep your passport on you: Macao is a border. Different currency and mobile network.</p>
+        </div>
+      </div>
+      <div class="day" data-date="2026-10-14">
+        <div class="when"><span>Wed</span><b>14</b><span class="city">Macao → Guangzhou</span></div>
+        <div class="body">
+          <h3>Free day in Macao, then Guangzhou</h3>
+          <ul>
+            <li>Groups back together · check-out from the Conrad</li>
+            <li>Free day in Macao</li>
+            <li>Late afternoon: transfer to Guangzhou, check-in at the Ritz-Carlton</li>
+          </ul>
+          <p class="note"><b>New entry into mainland China</b>: passport control, plan for a new arrival card.</p>
+        </div>
+      </div>
+      <div class="day" data-date="2026-10-15">
+        <div class="when"><span>Thu</span><b>15</b><span class="city">Guangzhou</span></div>
+        <div class="body">
+          <h3>Canton Fair · Phase 1 opening day</h3>
+          <ul><li>Badge <b>and</b> passport required at the entrance · Pazhou complex</li></ul>
+          <p class="note">Metro line 8 (Xingangdong / Pazhou) or line 11.</p>
+        </div>
+      </div>
+      <div class="day" data-date="2026-10-16">
+        <div class="when"><span>Fri</span><b>16</b><span class="city">Guangzhou</span></div>
+        <div class="body">
+          <h3>Canton Fair + bookable visits <span class="tag w">night flight</span></h3>
+          <ul>
+            <li>Check-out <b>by 12:00</b>: you keep your luggage with you all day</li>
+            <li>Fair and visits (sign-up TBC)</li>
+            <li>Evening: transfer to Baiyun airport T3, be there around <span class="mono">21:30</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="day" data-date="2026-10-17">
+        <div class="when"><span>Sat</span><b>17</b><span class="city">Home</span></div>
+        <div class="body">
+          <h3>Return flights</h3>
+          <ul>
+            <li><span class="mono">00:20</span> <b>EK 363</b> CAN → DXB, arrives <span class="mono">04:00</span> · A380</li>
+            <li><span class="mono">07:50</span> <b>EK 183</b> DXB → BRU, arrives <span class="mono">13:30</span> · B777</li>
+          </ul>
+          <p class="note">Expect queues at border control in Brussels.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Flights ===== -->
+  <section id="vols">
+    <div class="sec-head">
+      <h2>Flights</h2>
+      <span class="muted" style="font-size:.85rem">Emirates via Dubai · booking reference on your e-ticket</span>
+    </div>
+    <div class="flights" id="flights"></div>
+    <div class="cols">
+      <div style="display:grid;gap:8px">
+        <h3>Luggage</h3>
+        <ul class="tips">
+          <li>Organiser's instruction: <b>one cabin bag + one backpack</b>. On the 13th we go hotel → fair or factory → airport with our luggage.</li>
+          <li>Emirates cabin (Economy): <b>1 bag, 7 kg max, 115 cm</b> in total. Weigh your bag.</li>
+          <li>Checked baggage is included in the ticket if needed (samples, Canton Fair catalogues). Check your allowance on the e-ticket.</li>
+          <li>Bag wrapping is not required. If you do it, use only Brussels Airport's official providers, otherwise the bag will be refused.</li>
+        </ul>
+      </div>
+      <div style="display:grid;gap:8px">
+        <h3>Travel agency</h3>
+        <p>Nemo Voyages Charleroi · <span class="mono">+32 71 30 81 76</span></p>
+        <p class="muted" style="font-size:.88rem">Individual e-tickets are sent by the organiser. Your booking reference is on it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Hotels ===== -->
+  <section id="hotels">
+    <div class="sec-head">
+      <h2>Hotels</h2>
+      <span class="muted" style="font-size:.85rem">Shared twin rooms · your roommate is listed in expotrip</span>
+    </div>
+    <div class="hotels" id="hotelList"></div>
+  </section>
+
+  <!-- ===== Visits ===== -->
+  <section id="visites">
+    <h2>Fairs &amp; visits</h2>
+    <div class="visit">
+      <div class="sec-head"><h3>CIIF 2026 · Shanghai</h3><div class="meta"><span class="chip">12–13 Oct</span><span class="chip">NECC Hongqiao</span></div></div>
+      <p>China's largest industrial technology fair: over 3,000 exhibitors across 300,000 m², 186,000 trade visitors in 2025. Focus on the two themed shows <b>RS (Robotics Show)</b> and <b>AIMS (Next-Gen Intelligent Manufacturing Show)</b>.</p>
+      <p class="muted" style="font-size:.88rem">Visitor badge: pre-register on ciif-expo.com, unless the organiser handles it for the group (TBC).</p>
+    </div>
+    <div class="visit">
+      <div class="sec-head"><h3>Agibot <span class="cjk muted" style="font-weight:400">智元机器人</span></h3><div class="meta"><span class="chip">13 Oct morning</span><span class="chip">optional</span><span class="chip">Lingang</span></div></div>
+      <p>Shanghai humanoid-robot start-up founded in 2023 by Peng Zhihui (ex-Huawei). Its factory in the Lingang special zone builds bipedal and wheeled humanoids, in series production since late 2024 / 2025: Shanghai's first humanoid production line.</p>
+      <p class="muted" style="font-size:.88rem">Lingang is about 1 h from Jing'an. The visit must end before the 13:45 meeting at the hotel. Useful questions: production volumes, unit price, data-collection model.</p>
+    </div>
+    <div class="visit">
+      <div class="sec-head"><h3>Macao</h3><div class="meta"><span class="chip">13 evening → 14 Oct</span></div></div>
+      <ul class="tips">
+        <li>Casinos: <b>21+ only</b>, no photos on the gaming floor, carry your passport.</li>
+        <li>Free casino shuttles from the ferry terminals and the airport.</li>
+        <li>Currency: pataca (MOP). Hong Kong dollars are accepted at par, about 3% against you.</li>
+      </ul>
+    </div>
+    <div class="visit">
+      <div class="sec-head"><h3>Canton Fair · 140th session</h3><div class="meta"><span class="chip">15–16 Oct</span><span class="chip">Phase 1: 15–19 Oct</span><span class="chip">Pazhou</span></div></div>
+      <p>Phase 1 categories: electronics and electrical goods, household appliances, lighting, machinery and production equipment, hardware and tools, vehicles and mobility, new energy. Industrial robotics and automation are on show.</p>
+      <ul class="tips">
+        <li><b>Personal</b> badge, shown with your passport at every entry. Lost badge: replaced at the visitor centre in ~1 h (passport required).</li>
+        <li>3 zones, 16 halls, 1.5 million m²: ~20 min on foot to cross. <b>Entrance A</b> = the only reliable meeting point.</li>
+        <li>Comfortable shoes and a bottle of water. The fair Wi-Fi is overloaded: rely on your eSIM.</li>
+        <li>Photograph every interesting stand together with its business card. Have samples delivered to the hotel.</li>
+      </ul>
+      <p class="muted" style="font-size:.88rem">Overseas buyer badge: apply through the <i>Buyer Service System</i>, collect it with your original passport, unless the organiser handles it (TBC).</p>
+    </div>
+  </section>
+
+  <!-- ===== Free time ===== -->
+  <section id="libre">
+    <div class="sec-head">
+      <h2>Free time</h2>
+      <span class="off-badge">Unofficial</span>
+    </div>
+    <div class="alert info">
+      <span class="label">Not part of the official programme</span>
+      <p>These activities are suggestions only, <b>not organised or covered by the organiser</b>. They are personal, on your own free time and at your own expense. Always stick to the group's times (transfers, check-out, meeting points) and tell someone in the group if you head off on your own.</p>
+    </div>
+    <div class="free">
+      <div class="free-city">
+        <div class="free-head"><span class="label">Shanghai</span><span class="chip">Mon 12 evening · Tue 13 early</span></div>
+        <div class="spot top">
+          <div class="spot-t"><h3>The Bund</h3><span class="tag">must-see</span></div>
+          <p>The Huangpu riverside promenade, between historic façades and the Pudong skyscrapers. ~20 min by metro or taxi from Jing'an.</p>
+          <p class="hint">Before 22:00: the Pudong lights go off around then.</p>
+        </div>
+        <div class="spot">
+          <div class="spot-t"><h3>Yuyuan street</h3></div>
+          <p>Old-style street lit up at night, snacks and shops. Combines well with the Bund.</p>
+          <p class="hint">Yu Garden is closed on Mondays.</p>
+        </div>
+        <div class="spot">
+          <div class="spot-t"><h3>Jing'an Park</h3></div>
+          <p>Across from the hotel. 30 min on the morning of the 13th: locals dancing and doing tai chi.</p>
+          <p class="hint">For those not going to Agibot.</p>
+        </div>
+      </div>
+      <div class="free-city">
+        <div class="free-head"><span class="label">Macao</span><span class="chip">Tue 13 evening · Wed 14 daytime</span></div>
+        <div class="spot top">
+          <div class="spot-t"><h3>Historic centre</h3><span class="tag">must-see</span></div>
+          <p><b>Ruins of St. Paul's</b> early in the morning, then <b>Monte Fort</b> right next to it (free, 360° view), and walk down to <b>Senado Square</b> and its Portuguese cobblestones. UNESCO World Heritage.</p>
+          <p class="hint">15–20 min by taxi from Cotai. Try the Portuguese egg tarts.</p>
+        </div>
+        <div class="spot">
+          <div class="spot-t"><h3>Taipa Village</h3></div>
+          <p>Lanes and Macanese food, ~15 min on foot from the Conrad. Ideal in the afternoon, close to the hotel before the transfer to Guangzhou.</p>
+        </div>
+        <div class="spot">
+          <div class="spot-t"><h3>Casinos and the Venetian</h3></div>
+          <p>On the evening of the 13th, reachable by covered walkway from the Conrad.</p>
+          <p class="hint">21+ only, carry your passport, no photos on the gaming floor.</p>
+        </div>
+      </div>
+      <div class="free-city">
+        <div class="free-head"><span class="label">Guangzhou</span><span class="chip">evenings of the 14th and 15th</span></div>
+        <div class="spot top">
+          <div class="spot-t"><h3>Pearl River night cruise</h3><span class="tag">must-see</span></div>
+          <p>About 1 h along the illuminated skyline, from the Canton Tower pier. Departures between 19:00 and 21:00.</p>
+          <p class="hint">Book on Trip.com, passport required.</p>
+        </div>
+        <div class="spot">
+          <div class="spot-t"><h3>Canton Tower</h3></div>
+          <p>A 2 min drive from the Ritz-Carlton. Best at night, open until 22:30. The top deck and the "bubble tram" cost more but are worth it according to visitors.</p>
+          <p class="hint">Combines with the cruise on the same evening.</p>
+        </div>
+      </div>
+    </div>
+    <p class="muted" style="font-size:.85rem">If the fair days are long, the best-value trio: the Bund on the 12th, central Macao on the morning of the 14th, the Guangzhou cruise on the 15th.</p>
+  </section>
+
+  <!-- ===== Checklist ===== -->
+  <section id="checklist">
+    <div class="sec-head">
+      <h2>Before you go</h2>
+      <span class="mono muted" id="checkCount">0 / 0</span>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="checkBar"></i></div>
+    <div class="checks" id="checks"></div>
+    <p class="muted" style="font-size:.82rem">Your ticks stay in your browser only. Each colleague has their own list.</p>
+  </section>
+
+  <!-- ===== Borders ===== -->
+  <section id="frontieres">
+    <h2>Borders &amp; customs</h2>
+    <div class="cols">
+      <div class="tbl">
+        <table>
+          <thead><tr><th>Territory</th><th>Belgian passport</th><th>Stay</th></tr></thead>
+          <tbody>
+            <tr><td><b>Mainland China</b></td><td>Visa-free (scheme extended to 31/12/2026)</td><td class="mono">30 d / entry</td></tr>
+            <tr><td><b>Macao</b></td><td>Visa-free</td><td class="mono">90 d</td></tr>
+          </tbody>
+        </table>
+        <p class="muted" style="font-size:.82rem;margin-top:8px">Other nationalities in the group: check your own entry rules.</p>
+      </div>
+      <ul class="tips">
+        <li><b>Three border crossings</b>: leaving mainland China for Macao, re-entering Macao → Guangzhou, then leaving from Guangzhou. Each entry starts a new 30-day period.</li>
+        <li>Arrival card: the first one (flight EK 304) is filled in ahead of time. For Macao → Guangzhou, plan a new card with the Ritz-Carlton address.</li>
+        <li>Cash: up to <b>USD 5,000</b> (≈ €4,500) in foreign currency without declaring it to Chinese customs.</li>
+        <li>Fingerprints are taken on entry into China.</li>
+        <li>EES (the new Schengen Entry/Exit System): does not apply to EU citizens. Non-EU travellers in the group must register in the <i>Travel to Europe</i> app before departure.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== Kit ===== -->
+  <section id="kit">
+    <h2>On the ground</h2>
+    <div class="kit">
+      <div>
+        <h3>Internet access</h3>
+        <p>A <b>travel eSIM</b> (China + Macao) routes traffic through a foreign network: WhatsApp, Google, Gmail and LinkedIn work on mobile data without a VPN. On hotel and fair Wi-Fi in China, these services are blocked.</p>
+        <p class="muted" style="font-size:.88rem">On landing: turn on the eSIM for data and its roaming, turn off roaming on the Belgian SIM but keep it active for SMS (Alipay and bank codes). Dubai is not covered: use the airport Wi-Fi.</p>
+      </div>
+      <div>
+        <h3>VPN (backup)</h3>
+        <p>Useful for the laptop on hotel Wi-Fi. Install and test it <b>before departure</b>: it cannot be downloaded from inside China. Ask IT about the company VPN.</p>
+        <p class="muted" style="font-size:.88rem">Stealth mode on, HK / Japan / Singapore servers, VPN off for Alipay, WeChat and Didi.</p>
+      </div>
+      <div>
+        <h3>Payments</h3>
+        <p>Mainland China pays for almost everything without cash. <b>Alipay</b> as your main option, WeChat Pay as a backup. European cards rarely work directly. Keep a little CNY in cash. In Macao: Alipay, MOP and HKD.</p>
+      </div>
+      <div>
+        <h3>Power plugs</h3>
+        <p>China: types A/C/I, 220 V. Thin European plugs often fit, Belgian earthed plugs don't. <b>Macao: type G (British)</b>. Bring a universal adapter with USB ports.</p>
+      </div>
+      <div>
+        <h3>Weather</h3>
+        <p><span class="mono" style="font-size:1.3rem;font-weight:600">26–32 °C</span></p>
+        <p>Light clothes + a layer for the air conditioning (fairs, hotels, plane). End of typhoon season in Macao/Guangzhou: low but real risk.</p>
+      </div>
+      <div>
+        <h3>Useful apps</h3>
+        <p>Alipay · WeChat · Amap or Baidu Maps (Google Maps is poor in China) · Didi · offline translator · expotrip · NIA 12367</p>
+      </div>
+      <div>
+        <h3>Business etiquette</h3>
+        <p>Plenty of business cards, handed over with both hands, Chinese side facing the other person. Contacts are swapped by <b>WeChat QR code</b> rather than email. Many conversations happen in Mandarin: the translator will come in handy.</p>
+      </div>
+      <div>
+        <h3>Converter</h3>
+        <div class="conv">
+          <label for="eurIn">Amount in euros
+            <input id="eurIn" type="number" inputmode="decimal" min="0" step="1" value="100">
+          </label>
+          <div class="rates">
+            <div class="rate"><b id="rCny">770</b><span>CNY · yuan</span></div>
+            <div class="rate"><b id="rMop">936</b><span>MOP · pataca</span></div>
+            <div class="rate"><b id="rHkd">909</b><span>HKD</span></div>
+          </div>
+          <p class="muted" style="font-size:.78rem">ECB rates, Sept 2026: €1 ≈ 7.70 CNY ≈ 9.36 MOP ≈ 9.09 HKD</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contacts ===== -->
+  <section id="contacts">
+    <div class="sec-head"><h2>Emergency contacts</h2><span class="muted" style="font-size:.85rem">Organisers</span></div>
+    <div class="contacts" id="contactList"></div>
+    <p class="muted" style="font-size:.88rem">Lost passport: call the organiser first, then the consulate. A copy or photo of the passport speeds up the replacement.</p>
+  </section>
+
+  <!-- ===== To be confirmed ===== -->
+  <section id="confirmer">
+    <h2>Still to confirm with the organiser</h2>
+    <ol class="todo">
+      <li><b>13 Oct: Agibot or the fair?</b> Choice to make, and departure time for the visit (must end before 13:45).</li>
+      <li><b>Macao → Guangzhou transport on the 14th</b>: what time and how (coach or via Hengqin)? New arrival card?</li>
+      <li><b>Fair badges</b> for CIIF and the Canton Fair: handed out by the organiser or individual registration?</li>
+      <li><b>Bookable visits on the 16th</b>: how to sign up, and what time is the airport transfer?</li>
+      <li><b>Exact meeting point</b> at Brussels Airport (Saturday 19:00).</li>
+    </ol>
+  </section>
+
+  <!-- ===== Share ===== -->
+  <section id="partager">
+    <h2>Share this page</h2>
+    <div class="share">
+      <svg class="qr" viewBox="0 0 41 41" shape-rendering="crispEdges" role="img" aria-label="QR code → https://corentin-tin.github.io/mission-chine-2026/en/"><rect width="100%" height="100%" fill="#fff"/><path fill="#111" d="M4 4h7v1h-7zM12 4h2v1h-2zM15 4h1v1h-1zM17 4h1v1h-1zM20 4h5v1h-5zM26 4h2v1h-2zM30 4h7v1h-7zM4 5h1v1h-1zM10 5h1v1h-1zM12 5h4v1h-4zM17 5h1v1h-1zM20 5h1v1h-1zM22 5h1v1h-1zM24 5h1v1h-1zM26 5h2v1h-2zM30 5h1v1h-1zM36 5h1v1h-1zM4 6h1v1h-1zM6 6h3v1h-3zM10 6h1v1h-1zM13 6h3v1h-3zM20 6h1v1h-1zM22 6h1v1h-1zM24 6h1v1h-1zM27 6h2v1h-2zM30 6h1v1h-1zM32 6h3v1h-3zM36 6h1v1h-1zM4 7h1v1h-1zM6 7h3v1h-3zM10 7h1v1h-1zM12 7h2v1h-2zM18 7h1v1h-1zM20 7h1v1h-1zM22 7h2v1h-2zM27 7h2v1h-2zM30 7h1v1h-1zM32 7h3v1h-3zM36 7h1v1h-1zM4 8h1v1h-1zM6 8h3v1h-3zM10 8h1v1h-1zM14 8h1v1h-1zM16 8h3v1h-3zM21 8h1v1h-1zM23 8h2v1h-2zM26 8h1v1h-1zM30 8h1v1h-1zM32 8h3v1h-3zM36 8h1v1h-1zM4 9h1v1h-1zM10 9h1v1h-1zM14 9h2v1h-2zM18 9h1v1h-1zM21 9h3v1h-3zM28 9h1v1h-1zM30 9h1v1h-1zM36 9h1v1h-1zM4 10h7v1h-7zM12 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM20 10h1v1h-1zM22 10h1v1h-1zM24 10h1v1h-1zM26 10h1v1h-1zM28 10h1v1h-1zM30 10h7v1h-7zM12 11h2v1h-2zM15 11h1v1h-1zM21 11h3v1h-3zM27 11h2v1h-2zM4 12h1v1h-1zM6 12h2v1h-2zM9 12h3v1h-3zM15 12h2v1h-2zM20 12h3v1h-3zM25 12h1v1h-1zM30 12h1v1h-1zM33 12h1v1h-1zM35 12h2v1h-2zM9 13h1v1h-1zM15 13h2v1h-2zM20 13h1v1h-1zM22 13h2v1h-2zM25 13h1v1h-1zM27 13h1v1h-1zM30 13h2v1h-2zM33 13h4v1h-4zM4 14h2v1h-2zM9 14h7v1h-7zM18 14h1v1h-1zM21 14h1v1h-1zM24 14h2v1h-2zM27 14h3v1h-3zM31 14h3v1h-3zM35 14h2v1h-2zM8 15h2v1h-2zM11 15h1v1h-1zM13 15h1v1h-1zM16 15h4v1h-4zM24 15h1v1h-1zM26 15h1v1h-1zM28 15h1v1h-1zM31 15h1v1h-1zM33 15h1v1h-1zM6 16h2v1h-2zM10 16h4v1h-4zM22 16h2v1h-2zM28 16h2v1h-2zM31 16h3v1h-3zM36 16h1v1h-1zM4 17h1v1h-1zM6 17h4v1h-4zM12 17h1v1h-1zM14 17h3v1h-3zM20 17h1v1h-1zM23 17h1v1h-1zM25 17h2v1h-2zM28 17h1v1h-1zM33 17h1v1h-1zM35 17h1v1h-1zM4 18h2v1h-2zM9 18h2v1h-2zM13 18h1v1h-1zM16 18h1v1h-1zM19 18h2v1h-2zM23 18h2v1h-2zM26 18h1v1h-1zM30 18h1v1h-1zM33 18h2v1h-2zM4 19h3v1h-3zM8 19h1v1h-1zM11 19h1v1h-1zM16 19h1v1h-1zM20 19h1v1h-1zM24 19h4v1h-4zM29 19h2v1h-2zM32 19h3v1h-3zM4 20h3v1h-3zM8 20h5v1h-5zM15 20h1v1h-1zM17 20h1v1h-1zM19 20h1v1h-1zM22 20h1v1h-1zM24 20h3v1h-3zM29 20h2v1h-2zM32 20h1v1h-1zM34 20h1v1h-1zM8 21h1v1h-1zM12 21h1v1h-1zM15 21h1v1h-1zM17 21h6v1h-6zM24 21h1v1h-1zM26 21h5v1h-5zM32 21h2v1h-2zM35 21h2v1h-2zM4 22h3v1h-3zM9 22h2v1h-2zM13 22h2v1h-2zM16 22h2v1h-2zM19 22h1v1h-1zM21 22h1v1h-1zM24 22h2v1h-2zM28 22h1v1h-1zM31 22h2v1h-2zM34 22h2v1h-2zM4 23h1v1h-1zM11 23h1v1h-1zM13 23h2v1h-2zM17 23h3v1h-3zM24 23h1v1h-1zM29 23h1v1h-1zM32 23h1v1h-1zM35 23h2v1h-2zM4 24h1v1h-1zM6 24h1v1h-1zM8 24h1v1h-1zM10 24h1v1h-1zM12 24h1v1h-1zM14 24h1v1h-1zM16 24h1v1h-1zM18 24h1v1h-1zM22 24h1v1h-1zM25 24h2v1h-2zM33 24h2v1h-2zM36 24h1v1h-1zM4 25h5v1h-5zM14 25h1v1h-1zM19 25h1v1h-1zM22 25h3v1h-3zM26 25h2v1h-2zM30 25h1v1h-1zM34 25h1v1h-1zM36 25h1v1h-1zM9 26h2v1h-2zM12 26h1v1h-1zM16 26h1v1h-1zM18 26h1v1h-1zM20 26h3v1h-3zM25 26h4v1h-4zM30 26h3v1h-3zM34 26h3v1h-3zM5 27h1v1h-1zM9 27h1v1h-1zM15 27h2v1h-2zM20 27h1v1h-1zM24 27h1v1h-1zM26 27h1v1h-1zM30 27h2v1h-2zM33 27h1v1h-1zM4 28h1v1h-1zM7 28h4v1h-4zM12 28h4v1h-4zM17 28h1v1h-1zM19 28h1v1h-1zM21 28h1v1h-1zM23 28h1v1h-1zM27 28h6v1h-6zM35 28h1v1h-1zM12 29h1v1h-1zM14 29h1v1h-1zM16 29h6v1h-6zM23 29h1v1h-1zM28 29h1v1h-1zM32 29h2v1h-2zM4 30h7v1h-7zM12 30h1v1h-1zM14 30h1v1h-1zM16 30h1v1h-1zM18 30h1v1h-1zM23 30h1v1h-1zM25 30h4v1h-4zM30 30h1v1h-1zM32 30h1v1h-1zM4 31h1v1h-1zM10 31h1v1h-1zM12 31h2v1h-2zM15 31h2v1h-2zM19 31h2v1h-2zM24 31h2v1h-2zM27 31h2v1h-2zM32 31h5v1h-5zM4 32h1v1h-1zM6 32h3v1h-3zM10 32h1v1h-1zM13 32h1v1h-1zM16 32h1v1h-1zM18 32h1v1h-1zM21 32h1v1h-1zM24 32h2v1h-2zM27 32h6v1h-6zM34 32h2v1h-2zM4 33h1v1h-1zM6 33h3v1h-3zM10 33h1v1h-1zM12 33h1v1h-1zM14 33h1v1h-1zM17 33h1v1h-1zM21 33h2v1h-2zM25 33h1v1h-1zM27 33h2v1h-2zM31 33h1v1h-1zM34 33h1v1h-1zM36 33h1v1h-1zM4 34h1v1h-1zM6 34h3v1h-3zM10 34h1v1h-1zM12 34h1v1h-1zM15 34h3v1h-3zM22 34h1v1h-1zM25 34h3v1h-3zM30 34h2v1h-2zM33 34h2v1h-2zM4 35h1v1h-1zM10 35h1v1h-1zM13 35h3v1h-3zM17 35h1v1h-1zM19 35h3v1h-3zM23 35h1v1h-1zM26 35h3v1h-3zM31 35h2v1h-2zM36 35h1v1h-1zM4 36h7v1h-7zM12 36h1v1h-1zM16 36h2v1h-2zM19 36h1v1h-1zM21 36h5v1h-5zM27 36h1v1h-1zM29 36h1v1h-1zM32 36h1v1h-1zM34 36h1v1h-1z"/></svg>
+      <div class="share-txt">
+        <p>Scan the QR code with your phone camera to open this page.</p>
+        <p class="mono share-url">corentin-tin.github.io/mission-chine-2026/en/</p>
+        <button type="button" class="btn ghost sm" data-copy="https://corentin-tin.github.io/mission-chine-2026/en/">Copy link</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <img class="foot-logo" src="../assets/logo-g.png" alt="" width="131" height="240">
+    <p>Sources: organiser's programme and expotrip app (read on 7 Oct 2026), Emirates e-tickets, official fair websites. Details may change: expotrip is the reference.</p>
+    <ul>
+      <li><a href="https://www.ciif-expo.com/" target="_blank" rel="noopener">CIIF: official website</a></li>
+      <li><a href="https://globaltradefairs.com/tradefairs/event-details/canton-fair-2026-phase-1-151026-to-191026" target="_blank" rel="noopener">Canton Fair 2026 Phase 1, 15–19 Oct</a></li>
+      <li><a href="https://china.diplomatie.belgium.be/en/consular-services/belgians-visiting-both-prc-and-sar-hong-kongmacau" target="_blank" rel="noopener">Belgian Foreign Affairs: China and Macao</a></li>
+      <li><a href="https://au.china-embassy.gov.cn/eng/tzgg/202511/t20251105_11747334.htm" target="_blank" rel="noopener">Chinese Embassy: visa exemption extended to 31/12/2026</a></li>
+    </ul>
+  </footer>
+</div>
+
+<div class="driver" id="driver" hidden role="dialog" aria-modal="true" aria-label="Address for the driver">
+  <div class="label">请带我去 · Please take me to</div>
+  <div class="zh" id="drvZh"></div>
+  <div class="addr" id="drvAddr"></div>
+  <div class="tel" id="drvTel"></div>
+  <button class="btn ghost" id="drvClose">Close</button>
+</div>
+
+<script src="../assets/js/geo.js"></script>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>
