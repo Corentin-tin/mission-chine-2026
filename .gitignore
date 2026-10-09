@@ -1,0 +1,10 @@
+# Personal travel documents (e-tickets)
+billets/
+
+# Private trip brief (contains booking references)
+china-trip-brief-oct-2026.md
+
+# OS / editor
+.DS_Store
+.vscode/
+*.swp
