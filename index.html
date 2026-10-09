@@ -1,5 +1,9 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Mission Chine 2026</title>
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#E21F10">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;1,600;1,700&family=Outfit:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
@@ -48,6 +52,9 @@ button{font:inherit;cursor:pointer}
 .board-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:flex-end}
 .board h1{font-size:clamp(2.4rem,6vw,4rem);font-weight:700;font-style:italic;text-transform:uppercase;letter-spacing:.005em;line-height:1}
 .board .sub{color:var(--board-muted);margin-top:6px}
+.brand{display:flex;align-items:center;gap:clamp(12px,2vw,20px)}
+.brand-logo{height:clamp(64px,10vw,96px);width:auto;flex:none}
+.foot-logo{display:block;height:28px;width:auto;opacity:.85;margin-bottom:8px}
 .status{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--board-line);border-radius:999px;padding:6px 14px;font-size:.85rem;font-weight:500;background:var(--board-cell)}
 .status i{width:8px;height:8px;border-radius:50%;background:var(--board-hi);display:block}
 .status.live i{background:#70CB93;box-shadow:0 0 0 4px rgba(112,203,147,.25)}
@@ -303,10 +310,13 @@ footer ul{margin:0;padding-left:18px;display:grid;gap:2px}
   <!-- ===== Board ===== -->
   <header class="board" aria-label="Résumé du voyage">
     <div class="board-top">
-      <div>
-        <div class="label" style="color:var(--board-muted)">Voyage professionnel · groupe expotrip</div>
-        <h1>Mission Chine 2026</h1>
-        <p class="sub">Shanghai → Macao → Canton · 10–17 octobre 2026 · CIIF &amp; Canton Fair</p>
+      <div class="brand">
+        <img class="brand-logo" src="assets/logo-g.png" alt="" width="131" height="240">
+        <div>
+          <div class="label" style="color:var(--board-muted)">Voyage professionnel · groupe expotrip</div>
+          <h1>Mission Chine 2026</h1>
+          <p class="sub">Shanghai → Macao → Canton · 10–17 octobre 2026 · CIIF &amp; Canton Fair</p>
+        </div>
       </div>
       <div class="status" id="status"><i></i><span id="statusText">—</span></div>
     </div>
@@ -760,6 +770,7 @@ footer ul{margin:0;padding-left:18px;display:grid;gap:2px}
   </section>
 
   <footer>
+    <img class="foot-logo" src="assets/logo-g.png" alt="" width="131" height="240">
     <p>Sources : programme de l'organisateur et app expotrip (lus le 7 oct. 2026), e-tickets Emirates, sites officiels des salons. Les informations peuvent évoluer : expotrip fait foi.</p>
     <ul>
       <li><a href="https://www.ciif-expo.com/" target="_blank" rel="noopener">CIIF : site officiel</a></li>
